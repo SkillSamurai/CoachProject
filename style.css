@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: lightgray;
+}
+
+.hud {
+  font-size: 24px;
+  margin: 10px;
+}
+
+.area {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  background-color: white;
+  border: 5px solid black;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.catcher {
+  position: absolute;
+  bottom: 10px;
+  left: 180px; /* Starts near the middle */
+  font-size: 40px;
+}
+
+.item {
+  position: absolute;
+  font-size: 40px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding-top: 150px;
+}
+
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+}

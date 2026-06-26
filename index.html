@@ -1,28 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Easy Snack Attack</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maya's Website</title><link rel="stylesheet" href="style.css"></head>
 <body>
+<nav>
+  <a href="index.html">Home</a><a href="about.html">About Me</a>
+  <a href="favourites.html">My Favourites</a><a href="game.html">My Game</a>
+</nav>
 
-  <h1>SNACK ATTACK</h1>
-  
-  <div class="hud">
-    <span>Score: <span id="score">0</span></span> | 
-    <span>Lives: <span id="lives">3</span></span>
-  </div>
-  
-  <div class="area" id="area">
-    <div class="catcher" id="catcher">🍽️</div>
-    
-    <div class="overlay" id="overlay">
-      <h2>Snack Attack!</h2>
-      <button onclick="startGame()">Start</button>
-    </div>
-  </div>
+<h1>👋 Hi, I'm Maya!</h1>
+<p class="intro">Welcome to my website — I built every page myself!</p>
 
-  <script src="game.js"></script>
-</body>
-</html>
+<div class="robo">
+  <div class="bot" id="bot">🤖</div>
+  <div class="bubble2" id="bubble2">Hi! I'm Robo. Tap a button! 👇</div>
+  <button onclick="tellJoke()">Tell me a joke 😂</button>
+  <button onclick="showPower()">Show your power ⚡</button>
+</div>
+
+<a class="gamelink" href="game.html">🎮 Play my game — beat my high score!</a>
+
+<script>
+  // 🤖 Robo's brain — a list of jokes and a list of powers
+  const jokes = [
+    "Why did the robot go on holiday? To recharge its batteries! 🔋",
+    "How do robots eat snacks? They BYTE them! 😄",
+    "What music do robots love? Heavy metal! 🎸",
+    "Why was the robot late? It took the long way — R2-detour! 🤖",
+    "What did the robot say to the wall? Beep beep, excuse me!"
+  ];
+  const powers = [
+    "⚡ I can do 1,000,000 sums in ONE second!",
+    "🌍 I speak every language on Earth... and 3 from space!",
+    "🧠 I never forget anything — try me!",
+    "🔦 My eyes can light up a whole room!",
+    "🚀 I can calculate the way to the Moon!"
+  ];
+  function say(text){ document.getElementById('bubble2').textContent = text; }
+  function tellJoke(){ say( jokes[Math.floor(Math.random()*jokes.length)] ); }
+  function showPower(){
+    say( powers[Math.floor(Math.random()*powers.length)] );
+    const b = document.getElementById('bot');
+    b.classList.add('zap'); setTimeout(()=>b.classList.remove('zap'), 500);
+  }
+</script>
+</body></html>

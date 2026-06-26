@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 680" preserveAspectRatio="xMidYMid slice">
+<defs><pattern id="c" width="120" height="120" patternUnits="userSpaceOnUse">
+<rect width="120" height="120" fill="#fff2f2"/>
+<rect width="60" height="60" fill="#ff8a8a"/><rect x="60" y="60" width="60" height="60" fill="#ff8a8a"/>
+</pattern></defs>
+<rect width="600" height="680" fill="url(#c)"/>
+</svg>

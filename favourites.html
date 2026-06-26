@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maya's Favourites</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<nav>
+  <a href="index.html">Home</a><a href="about.html">About Me</a>
+  <a href="favourites.html">My Favourites</a><a href="game.html">My Game</a>
+</nav>
+<h1>⭐ My Favourites</h1>
+<p class="intro">Tap a card to find out why I love it!</p>
+
+<div class="cards">
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="emoji">🎮</div><b>Minecraft</b>
+    <div class="why">I build giant castles and secret tunnels!</div>
+    <div class="tap">tap me</div>
+  </div>
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="emoji">🍕</div><b>Pizza</b>
+    <div class="why">Pineapple belongs on it. Fight me! 🍍</div>
+    <div class="tap">tap me</div>
+  </div>
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="emoji">🐶</div><b>Dogs</b>
+    <div class="why">My dog Biscuit is the goodest boy.</div>
+    <div class="tap">tap me</div>
+  </div>
+  <div class="card" onclick="this.classList.toggle('open')">
+    <div class="emoji">💧</div><b>Avatar</b>
+    <div class="why">One day I'll be a waterbender!</div>
+    <div class="tap">tap me</div>
+  </div>
+</div>
+
+<div class="surprise">
+  <button onclick="surprise()">🎲 Surprise me!</button>
+  <div class="banner" id="banner"></div>
+</div>
+
+<script>
+  const favourites = ["🎮 Minecraft","🍕 Pizza","🐶 Dogs","💧 Avatar"];
+  function surprise(){
+    const pick = favourites[Math.floor(Math.random()*favourites.length)];
+    document.getElementById('banner').textContent = "Today's random favourite: " + pick + "!";
+  }
+</script>
+</body></html>

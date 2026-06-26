@@ -1,114 +1,20 @@
-var score = 0;
-var lives = 3;
-var gameRunning = false;
+// 🎮🎮 YOUR GAME — pick your theme! Change anything with a ✏️ 🎮🎮
 
-var catcherX = 180;
-var itemX = 0;
-var itemY = 0;
-var itemIsBad = false; 
+// 🌌 BACKGROUND — a colour OR a picture
+//    pictures ready to use:  images/bg-space.svg · images/bg-food.svg · images/bg-ocean.svg
+const BACKGROUND = "images/bg-space.svg";     // ✏️ or a colour like "#0b1126"
 
-var area = document.getElementById('area');
-var catcher = document.getElementById('catcher');
-var scoreEl = document.getElementById('score');
-var livesEl = document.getElementById('lives');
-var overlay = document.getElementById('overlay');
+// 🚀 PLAYER — your catcher (an emoji OR a picture)
+//    pictures ready to use:  images/rocket.svg · images/basket.svg
+const PLAYER = "images/rocket.svg";           // ✏️ or an emoji like "🧺" "🛸" "🐱"
 
+// ⭐ CATCH — things to catch for points (emoji or pictures)
+const CATCH = ["⭐","🪐","☄️"];               // ✏️ change these!
 
-document.addEventListener('keydown', function(event) {
-  if (gameRunning === false) return;
-  
-  if (event.key === 'ArrowLeft') {
-    catcherX = catcherX - 20;
-  }
-  if (event.key === 'ArrowRight') {
-    catcherX = catcherX + 20;
-  }
-  
+// 👾 DODGE — the ONE thing to avoid
+const DODGE = "👾";                           // ✏️ change this!
 
-  if (catcherX < 0) catcherX = 0;
-  if (catcherX > 350) catcherX = 350;
-  
-  catcher.style.left = catcherX + 'px';
-});
+const SPEED = 3;                              // ✏️ how fast things fall (try 2 or 5)
+const LIVES = 3;                              // ✏️ how many lives
 
-
-function startGame() {
-  score = 0;
-  lives = 3;
-  gameRunning = true;
-  
-  scoreEl.textContent = score;
-  livesEl.textContent = lives;
-  overlay.style.display = 'none'; 
-  
-  resetItem();
-  runGameLoop();
-}
-
-
-function resetItem() {
-  itemY = 0;
-  itemX = Math.floor(Math.random() * 350); 
-  
-  
-  if (Math.random() < 0.25) {
-    itemIsBad = true;
-    area.innerHTML = '<div class="catcher" id="catcher" style="left:' + catcherX + 'px">🍽️</div>' +
-                     '<div class="item" id="fallingItem" style="left:' + itemX + 'px; top:0px;">🥦</div>';
-  } else {
-    itemIsBad = false;
-    area.innerHTML = '<div class="catcher" id="catcher" style="left:' + catcherX + 'px">🍽️</div>' +
-                     '<div class="item" id="fallingItem" style="left:' + itemX + 'px; top:0px;">🍕</div>';
-  }
-  
-  
-  catcher = document.getElementById('catcher');
-}
-
-// Main driving loop that updates elements step-by-step
-function runGameLoop() {
-  if (gameRunning === false) return;
-
-  itemY = itemY + 5; // Change this number to make the item fall faster or slower
-  var fallingItem = document.getElementById('fallingItem');
-  if (fallingItem) {
-    fallingItem.style.top = itemY + 'px';
-  }
-
-  // Collision Check: Has the item reached player platform height?
-  if (itemY > 440) {
-    var distance = Math.abs(itemX - catcherX);
-    
-    if (distance < 40) {
-      // Caught item safely!
-      if (itemIsBad === true) {
-        lives = lives - 1;
-      } else {
-        score = score + 1;
-      }
-      
-      scoreEl.textContent = score;
-      livesEl.textContent = lives;
-      
-      if (lives <= 0) {
-        endGame();
-        return;
-      }
-      resetItem();
-    }
-  }
-
-  // Missing Check: Item passed beneath screen borders safely
-  if (itemY > 500) {
-    resetItem();
-  }
-
-  // Runs this loop function again every 20 milliseconds
-  setTimeout(runGameLoop, 20);
-}
-
-function endGame() {
-  gameRunning = false;
-  overlay.style.display = 'block'; // Show start screen menu overlay
-  overlay.innerHTML = '<h2>Game Over! Score: ' + score + '</h2><button onclick="startGame()">Play Again</button>';
-}
+startGame({ background:BACKGROUND, player:PLAYER, catch:CATCH, dodge:DODGE, speed:SPEED, lives:LIVES });
